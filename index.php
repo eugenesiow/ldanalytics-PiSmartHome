@@ -6,6 +6,8 @@ Flight::set('pageList',array('Home'=>'/','Descriptive'=>'/analytics/descriptive'
 
 Flight::route('/query/@type', 'query');
 
+Flight::route('/sparql/@type', 'sparql');
+
 Flight::route('/', function(){
     Flight::render('header', array('activePage' => 'Home'), 'header_content');
     Flight::render('home', array(), 'body_content');

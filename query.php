@@ -2,10 +2,13 @@
 function query($type){
     if(!is_null($type)) {
         //get parameter data
-        //var_dump(Flight::request()->query->getData());
+        $parameters = Flight::request()->query->getData();
 
         $url = 'http://localhost:3030/smarthome_tdb/query';
         $query_string = file_get_contents('queries/'.$type.'.txt');
+        foreach($parameters as $key=>$value){
+            $query_string = str_replace('{'.$key.'}',$value,$query_string);
+        }
 
         //open connection
         $ch = curl_init();
@@ -24,4 +27,9 @@ function query($type){
 
         echo $result;
     }
+}
+
+function sparql($type) {
+    $query_string = file_get_contents('queries/'.$type.'.txt');
+    echo $query_string;
 }

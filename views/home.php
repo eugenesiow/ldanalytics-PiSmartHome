@@ -1,8 +1,8 @@
 <div class="container-fluid">
 
     <div class="starter-template">
-        <h1>Raspberry PiSmartHome</h1>
-        <p id="content" class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+        <h1><span class="icon-pismarthome"></span> PiSmartHome</h1>
+        <p id="content" class="lead">A LinkedData Store and Analytics Engine<br/> on a <span class="highlight">RaspberryPi</span> for Smart Homes.</p>
     </div>
 
 </div><!-- /.container -->

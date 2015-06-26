@@ -1,7 +1,75 @@
 body {
-  padding-top: 60px;
+    padding-top: 70px;
+    color: #969696;
 }
+
 .starter-template {
-  padding: 30px 15px;
-  text-align: center;
+    padding: 30px 15px;
+    text-align: center;
 }
+
+.starter-template h1 {
+    color: #969696;
+}
+
+.starter-template .highlight {
+    color: #e30b5c;
+}
+
+@font-face {
+    font-family: 'icomoon';
+    src:url('/fonts/icomoon.eot?rkh8nj');
+    src:url('/fonts/icomoon.eot?#iefixrkh8nj') format('embedded-opentype'),
+    url('/fonts/icomoon.ttf?rkh8nj') format('truetype'),
+    url('/fonts/icomoon.woff?rkh8nj') format('woff'),
+    url('/fonts/icomoon.svg?rkh8nj#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-pismarthome:before {
+    content: "\e600";
+}
+
+.navbar {
+    background-color: rgba(255,255,255,0.95);
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.navbar { height: 60px; }
+.navbar .navbar-brand{ padding: 7px 12px; line-height: 60px; }
+.navbar .navbar-nav > li > a {  padding-top: 0px; padding-bottom: 0px; line-height: 60px; color: #969696 }
+.navbar .navbar-nav > li > a:hover {  background-color: #EEE }
+.navbar .navbar-nav > li.active {  font-weight: bold }
+
+
+.icon-pismarthome-title {
+    font-size: 2.5em;
+    color: #e30b5c;
+}
+
+.tab-pane-content {
+    margin-top:10px;
+}
+
+
+
+/*#date-selector {*/
+    /*width:220px;*/
+    /*margin-left:auto;*/
+    /*margin-right:auto;*/
+/*}*/

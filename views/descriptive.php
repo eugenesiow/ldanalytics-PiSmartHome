@@ -5,7 +5,9 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Temperature By Hour</div>
                 <div class="panel-body">
-                    Panel content
+                    <div id="date-selector" class="input-group date">
+                        <input type="text" class="form-control" value="19/07/2012"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -18,7 +20,7 @@
                 <div role="tabpanel" class="tab-pane active" id="viz">
                     <svg id="graphcanvas"></svg>
                 </div>
-                <div role="tabpanel" class="tab-pane" id="sparql">2</div>
+                <div role="tabpanel" class="tab-pane" id="sparql"><pre id="sparql-code" class="tab-pane-content"></pre></div>
             </div>
         </div>
     </div>
@@ -31,24 +33,61 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+<script src="/js/bootstrap-datepicker.min.js"></script>
 <script src="/js/nv.d3.min.js"></script>
 <script>
     $('#graphcanvas').height($(document).height()-120);
 
-    $.get('/query/temperature_by_hour',function(data){
-        var resultSet = JSON.parse(data)['results']['bindings'];
-        var temperature = [];
-        for(var i in resultSet) {
-            temperature.push({x:resultSet[i]['hours']['value'],y:resultSet[i]['sval']['value']});
+    LoadQuery('2012-07-19T00:00:00','2012-07-20T00:00:00');
+
+    function LoadQuery(startDate,endDate) {
+        $('#graphcanvas').hide();
+        $('#viz').prepend('<span class="loading-msg tab-pane-content">Loading...</span>');
+        $.get('/query/temperature_by_hour?startDate='+encodeURIComponent(startDate)+'&endDate='+encodeURIComponent(endDate),function(data){
+            if(data=="") {
+                $('.loading-msg').text('Error!');
+            }
+            else {
+                var resultSet = JSON.parse(data)['results']['bindings'];
+                var temperature = [];
+                for(var i in resultSet) {
+                    temperature.push({x:resultSet[i]['hours']['value'],y:resultSet[i]['sval']['value']});
+                }
+                temperature.sort(temperatureCompare);
+                LoadGraph([{
+                    values: temperature,      //values - represents the array of {x,y} data points
+                    key: 'Internal Temperature', //key  - the name of the series.
+                    color: '#ff7f0e'  //color - optional: choose your own line color.
+                }]);
+                $('.loading-msg').remove();
+                $('#graphcanvas').show();
+            }
+        });
+    }
+
+    $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+        var target = $(e.target).attr("href");
+        if ((target == '#sparql')) {
+            LoadSparql('temperature_by_hour');
         }
-        temperature.sort(temperatureCompare);
-        LoadGraph([{
-            values: temperature,      //values - represents the array of {x,y} data points
-            key: 'Internal Temperature', //key  - the name of the series.
-            color: '#ff7f0e'  //color - optional: choose your own line color.
-        }]);
-//        console.log(temperature)
     });
+
+    $('#date-selector').datepicker({
+        format: "dd/mm/yyyy",
+        startDate: "01/05/2012",
+        endDate: "29/7/2012"
+    }).on('changeDate', function(e){
+        var d = e.date;
+        var startDate = e.format('yyyy-mm-ddT00:00:00');
+        var endDate = d.getFullYear() + "-" + ('0' + (d.getMonth() + 1)).slice(-2) + "-" + ('0' + (d.getDate()+1)).slice(-2) + "T00:00:00";
+        LoadQuery(startDate,endDate);
+    });
+
+    function LoadSparql(queryType) {
+        $.get('/sparql/'+queryType,function(data){
+            $('#sparql-code').text(data);
+        });
+    }
 
     function temperatureCompare(a,b) {
         if (a.x < b.x)
