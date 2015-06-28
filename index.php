@@ -2,7 +2,8 @@
 require 'flight/Flight.php';
 require 'query.php';
 
-Flight::set('pageList',array('Home'=>'/','Descriptive'=>'/analytics/descriptive','Discovery'=>'/analytics/discovery','Predictive'=>'/analytics/predictive'));
+Flight::set('pageList',array('Home'=>'/','Information'=>array('Datasets'=>'/info/dataset'),
+    'Descriptive'=>'/analytics/descriptive','Discovery'=>'/analytics/discovery','Predictive'=>'/analytics/predictive'));
 
 Flight::route('/query/@type', 'query');
 
@@ -17,6 +18,12 @@ Flight::route('/', function(){
 Flight::route('/analytics/@pageName', function($pageName){
     Flight::render('header', array('activePage' => ucfirst($pageName)), 'header_content');
     Flight::render($pageName, array(), 'body_content');
+    return true;
+});
+
+Flight::route('/info/@pageName', function($pageName){
+    Flight::render('header', array('activePage' => 'Information'), 'header_content');
+    Flight::render('info/'.$pageName, array(), 'body_content');
     return true;
 });
 

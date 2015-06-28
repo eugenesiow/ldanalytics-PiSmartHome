@@ -14,10 +14,23 @@
                 <?php
                     $pageList = Flight::get('pageList');
                     foreach($pageList as $pageName => $pageLink) {
-                        if($pageName==$activePage)
-                            echo "<li class='active'><a href='".$pageLink."'>".$pageName."</a></li>";
-                        else
-                            echo "<li><a href='".$pageLink."'>".$pageName."</a></li>";
+                        if(is_array($pageLink)) {
+                            if ($pageName == $activePage)
+                                echo "<li class='dropdown active'>";
+                            else
+                                echo "<li class='dropdown'>";
+
+                            echo "<a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>".$pageName." <span class='caret'></span></a><ul class='dropdown-menu'>";
+                            foreach($pageLink as $subPageName => $subPageLink) {
+                                echo "<li><a href='".$subPageLink."'>".$subPageName."</a></li>";
+                            }
+                            echo "</ul></li>";
+                        } else {
+                            if ($pageName == $activePage)
+                                echo "<li class='active'><a href='" . $pageLink . "'>" . $pageName . "</a></li>";
+                            else
+                                echo "<li><a href='" . $pageLink . "'>" . $pageName . "</a></li>";
+                        }
                     }
                 ?>
             </ul>

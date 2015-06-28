@@ -3,16 +3,16 @@ body {
     color: #969696;
 }
 
-.starter-template {
+.frontpage-info {
     padding: 30px 15px;
     text-align: center;
 }
 
-.starter-template h1 {
+.frontpage-info h1 {
     color: #969696;
 }
 
-.starter-template .highlight {
+.frontpage-info .highlight {
     color: #e30b5c;
 }
 
@@ -69,7 +69,6 @@ body {
 .panel-default {
     margin-bottom: 0.5em;
 }
-
 
 
 /*#date-selector {*/
