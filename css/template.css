@@ -66,6 +66,10 @@ body {
     margin-top:10px;
 }
 
+.panel-default {
+    margin-bottom: 0.5em;
+}
+
 
 
 /*#date-selector {*/
