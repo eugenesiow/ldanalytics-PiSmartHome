@@ -4,15 +4,13 @@
         <div class="col-md-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-<!--                    <a href="#"><span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></a> -->
-                    Temperature By Hour</div>
+                    Temperature By Day</div>
                 <div class="panel-body">
                     <div class="input-group date date-selector" id="graph1">
-                        <input type="text" class="form-control" value="19/07/2012"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                        <input type="text" class="form-control" value="July 2012"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
                     </div>
                 </div>
             </div>
-            <button id="add-graph-btn" type="button" class="btn btn-default">Add</button>
         </div>
         <div class="col-md-10">
             <ul class="nav nav-tabs" role="tablist">
@@ -35,6 +33,7 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.5/js/bootstrap-select.min.js"></script>-->
 <script src="/js/bootstrap-datepicker.min.js"></script>
 <script src="/js/nv.d3.min.js"></script>
 <script>
@@ -42,40 +41,19 @@
     var graphData = [];
     var graphCache = {};
 
-    function setupButtons() {
-        $('#add-graph-btn').on('click', function () {
-            var newGraphId = 'graph'+(graphList.length+1);
-            var panel = $('<div>',{'class':'panel panel-default'}).append($('<div>',{'text':'Temperature By Hour','class':'panel-heading'}));
-            var dateSelect = $('<div>',{'class':'input-group date date-selector','id':newGraphId})
-                .append('<input type="text" class="form-control" value="19/07/2012"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>');
-            var panelBody = $('<div>',{'class':'panel-body'}).append(dateSelect);
-            $(panel.append(panelBody)).insertBefore(this);
-            graphList.push({'start':'2012-07-19T00:00:00','end':'2012-07-20T00:00:00','idName':newGraphId,'name':moment('2012-07-19').format('D MMM')});
-            setupDatePicker();
-            $('#'+newGraphId).datepicker('show');
-            $('#'+newGraphId).datepicker().on('hide',function(){
-                renderGraph();
-                $('#'+newGraphId).datepicker().off('hide');
-            });
-        })
-    }
-
     function setupDatePicker() {
         $('.date-selector').datepicker({
-            format: "dd/mm/yyyy",
-            startDate: "01/05/2012",
-            endDate: "29/7/2012",
+            format: "MM yyyy",
+            startDate: "05/2012",
+            endDate: "07/2012",
+            minViewMode: 1,
             autoclose: true
         }).on('changeDate', function(e){
-            var d = e.date;
-            var startDate = e.format('yyyy-mm-ddT00:00:00');
-            var endDate = d.getFullYear() + "-" + ('0' + (d.getMonth() + 1)).slice(-2) + "-" + ('0' + (d.getDate()+1)).slice(-2) + "T00:00:00";
-
+            var month = e.format('mm');
             for(var i in graphList) {
                 if(graphList[i].idName == this.id) {
-                    graphList[i].start = startDate;
-                    graphList[i].end = endDate;
-                    graphList[i].name = moment(e.format('yyyy-mm-dd')).format('D MMM');
+                    graphList[i].month = month;
+                    graphList[i].name = e.format('MM yyyy');
                     break;
                 }
             }
@@ -84,11 +62,11 @@
     }
 
     $(document).ready(function() {
-        graphList.push({'start':'2012-07-19T00:00:00','end':'2012-07-20T00:00:00','idName':'graph1','name':moment('2012-07-19').format('D MMM')});
+        graphList.push({'month':'07','idName':'graph1','name':'July 2012'});
         renderGraph();
         resizeGraph();
-        setupButtons();
         setupDatePicker();
+        setupTabs();
     });
 
     // window resize
@@ -110,13 +88,13 @@
                 graphData.push(graphCache[graphName]);
                 finaliseRender();
             } else {
-                LoadQuery(graphList[i].start, graphList[i].end, graphName);
+                LoadQuery(graphList[i].month, graphName);
             }
         }
     }
 
-    function LoadQuery(startDate,endDate,name) {
-        $.get('/query/temperature_by_hour?startDate='+encodeURIComponent(startDate)+'&endDate='+encodeURIComponent(endDate),function(data){
+    function LoadQuery(month,name) {
+        $.get('/query/temperature_by_day?month='+encodeURIComponent(month),function(data){
             if(data=="") {
                 $('.loading-msg').text('Error!');
             }
@@ -124,7 +102,7 @@
                 var resultSet = JSON.parse(data)['results']['bindings'];
                 var temperature = [];
                 for(var i in resultSet) {
-                    temperature.push({x:resultSet[i]['hours']['value'],y:resultSet[i]['sval']['value']});
+                    temperature.push({x:resultSet[i]['day']['value'],high:resultSet[i]['max']['value'],low:resultSet[i]['min']['value'],open:0,close:0});
                 }
                 temperature.sort(temperatureCompare);
                 var graphObj = {
@@ -148,12 +126,14 @@
         }
     }
 
-    $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
-        var target = $(e.target).attr("href");
-        if ((target == '#sparql')) {
-            LoadSparql('temperature_by_hour');
-        }
-    });
+    function setupTabs() {
+        $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+            var target = $(e.target).attr("href");
+            if ((target == '#sparql')) {
+                LoadSparql('temperature_by_day');
+            }
+        });
+    }
 
     function LoadSparql(queryType) {
         $.get('/sparql/'+queryType,function(data){
@@ -170,30 +150,33 @@
     }
 
     function LoadGraph(data) {
+        d3.selectAll("svg > *").remove();
         /*These lines are all chart setup.  Pick and choose which chart features you want to utilize. */
         nv.addGraph(function() {
-            var chart = nv.models.lineChart()
-                    .margin({left: 100})  //Adjust chart margins to give the x-axis some breathing room.
-                    .useInteractiveGuideline(true)  //We want nice looking tooltips and a guideline!
-                    .showLegend(true)       //Show the legend, allowing users to turn on/off line series.
-                    .showYAxis(true)        //Show the y-axis
-                    .showXAxis(true)        //Show the x-axis
-                ;
-
-            chart.xAxis     //Chart x-axis settings
-                .axisLabel('Time (h)')
-                .tickFormat(d3.format(',r'));
-
-            chart.yAxis     //Chart y-axis settings
-                .axisLabel('Temperature (deg F)')
-                .tickFormat(d3.format('.02f'));
-
-            d3.select('#graphcanvas')    //Select the <svg> element you want to render the chart in.
-                .datum(data)         //Populate the <svg> element with chart data...
-                .call(chart);          //Finally, render the chart!
-
-            //Update the chart when window resizes.
-            nv.utils.windowResize(function() { chart.update() });
+            var chart = nv.models.candlestickBarChart()
+                .x(function(d) { return d['x'] })
+                .y(function(d) { return d['high'] })
+                .duration(250)
+                .margin({left: 75, bottom: 50})
+                .forceY([62,90]);
+            chart.interactiveLayer.tooltip.contentGenerator(function(data) {
+                var dataObj = data['series'][0];
+                return dataObj['data']['x'] + ' ' + dataObj['key'] + ' (' +  d3.format(',.1f')(dataObj['data']['low']) + '&#8457; - ' + d3.format(',.1f')(dataObj['data']['high']) + '&#8457;)';
+            });
+            // chart sub-models (ie. xAxis, yAxis, etc) when accessed directly, return themselves, not the parent chart, so need to chain separately
+            chart.xAxis
+                .axisLabel("Day of Month")
+                .tickFormat(function(d) {
+                    return d;
+                });
+            chart.yAxis
+                .axisLabel('Temperature Range (deg F)')
+                .tickFormat(function(d){ return d3.format(',.1f')(d); });
+            d3.select('#graphcanvas')
+                .datum(data)
+                .transition().duration(500)
+                .call(chart);
+            nv.utils.windowResize(chart.update);
             return chart;
         });
     }

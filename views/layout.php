@@ -16,6 +16,7 @@
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.5/css/bootstrap-select.min.css">-->
     <link rel="stylesheet" href="/css/nv.d3.min.css">
     <link rel="stylesheet" href="/css/bootstrap-datepicker3.min.css" />
 
