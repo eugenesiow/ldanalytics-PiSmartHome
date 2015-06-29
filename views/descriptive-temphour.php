@@ -2,11 +2,10 @@
 
     <div class="row">
         <div class="col-md-2">
-<!--            <select class="selectpicker" data-width="100%" data-style="btn-primary">-->
-<!--                <option>Temperature By Hour</option>-->
-<!--                <option>Ketchup</option>-->
-<!--                <option>Barbecue</option>-->
-<!--            </select><p></p>-->
+            <select id="datastore-select" class="selectpicker" data-width="100%" data-style="btn-info">
+                <option data-store="direct">Query Pi Directly</option>
+                <option data-store="wo">Through Web Observatory</option>
+            </select><p></p>
             <div class="panel panel-default">
                 <div class="panel-heading">
 <!--                    <a href="#"><span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></a> -->
@@ -40,7 +39,7 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.5/js/bootstrap-select.min.js"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.5/js/bootstrap-select.min.js"></script>
 <script src="/js/bootstrap-datepicker.min.js"></script>
 <script src="/js/nv.d3.min.js"></script>
 <script>
@@ -125,7 +124,11 @@
     }
 
     function LoadQuery(startDate,endDate,name) {
-        $.get('/query/temperature_by_hour?startDate='+encodeURIComponent(startDate)+'&endDate='+encodeURIComponent(endDate),function(data){
+        var queryStoreUrl = 'query';
+        if($('#datastore-select').val() == 'Through Web Observatory') {
+            queryStoreUrl = 'querywo';
+        }
+        $.get('/'+queryStoreUrl+'/temperature_by_hour?startDate='+encodeURIComponent(startDate)+'&endDate='+encodeURIComponent(endDate),function(data){
             if(data=="") {
                 $('.loading-msg').text('Error!');
             }

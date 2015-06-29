@@ -1,13 +1,16 @@
 <?php
 require 'flight/Flight.php';
 require 'query.php';
+require 'querywo.php';
 
 Flight::set('pageList',array('Home'=>'/',
-    'Information'=>array('Datasets'=>'/info/dataset'),
+    'Information'=>array('Data Model'=>'/info/datamodel','Datasets'=>'/info/dataset'),
     'Descriptive'=>array('Temperature By Hour'=>'/analytics/descriptive/temphour','Temperature By Day'=>'/analytics/descriptive/tempday'),
     'Discovery'=>'/analytics/discovery/home','Predictive'=>'/analytics/predictive/home'));
 
 Flight::route('/query/@type', 'query');
+
+Flight::route('/querywo/@type', 'querywo');
 
 Flight::route('/sparql/@type', 'sparql');
 
