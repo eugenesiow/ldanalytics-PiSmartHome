@@ -74,6 +74,10 @@ body {
     color: #000;
 }
 
+.date-selector {
+    margin-bottom: 5px;
+}
+
 /*.date-selector {*/
     /*width:220px;*/
     /*margin-left:auto;*/

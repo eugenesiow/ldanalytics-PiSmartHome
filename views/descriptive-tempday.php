@@ -1,20 +1,11 @@
 <div class="container-fluid">
 
     <div class="row">
-        <div class="col-md-2">
+        <div id="sidebar" class="col-md-2">
             <select id="datastore-select" class="selectpicker" data-width="100%" data-style="btn-info">
                 <option data-store="direct">Query Pi Directly</option>
                 <option data-store="wo">Through Web Observatory</option>
             </select><p></p>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Temperature By Day</div>
-                <div class="panel-body">
-                    <div class="input-group date date-selector" id="graph1">
-                        <input type="text" class="form-control" value="July 2012"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="col-md-10">
             <ul class="nav nav-tabs" role="tablist">
@@ -44,6 +35,22 @@
     var graphList = [];
     var graphData = [];
     var graphCache = {};
+    var termNames = {'inName':'InternalTemperatureValue','exName':'ExternalTemperatureValue','inDes':'Internal Temperature','exDes':'External Temperature','inLabel':' (In)','exLabel': ' (Ex)'};
+
+    function addGraphPanel() {
+        var newGraphId = 'graph'+(graphList.length+1);
+        var panel = $('<div>',{'class':'panel panel-default'}).append($('<div>',{'text':'Temperature By Day','class':'panel-heading'}));
+        var dateSelect = $('<div>',{'class':'input-group date date-selector','id':newGraphId})
+            .append('<input type="text" class="form-control" value="July 2012"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>');
+        var typeSelect =  $('<select>',{'class':'selectpicker','data-link-date':newGraphId,'data-width':'100%'})
+            .append('<option>'+termNames.inDes+'</option><option>'+termNames.exDes+'</option>');
+        var panelBody = $('<div>',{'class':'panel-body'}).append(dateSelect).append(typeSelect);
+        $('#sidebar').append(panel.append(panelBody));
+        graphList.push({'month':'07','sensorType':termNames.inName,'idName':newGraphId,'name':'July 2012'+termNames.inLabel});
+        setupDatePicker();
+        setupTypeSelect();
+        return newGraphId;
+    }
 
     function setupDatePicker() {
         $('.date-selector').datepicker({
@@ -57,7 +64,31 @@
             for(var i in graphList) {
                 if(graphList[i].idName == this.id) {
                     graphList[i].month = month;
-                    graphList[i].name = e.format('MM yyyy');
+                    var label = termNames.inLabel;
+                    if(graphList[i].sensorType==termNames.exName) {
+                        label = termNames.exLabel;
+                    }
+                    graphList[i].name = e.format('MM yyyy')+label;
+                    break;
+                }
+            }
+            renderGraph();
+        });
+    }
+
+    function setupTypeSelect() {
+        $('.selectpicker').selectpicker().on('change',function() {
+            var sensorType = termNames.inName;
+            var nameType = termNames.inLabel;
+            if($(this).val()==termNames.exDes) {
+                sensorType = termNames.exName;
+                nameType = termNames.exLabel;
+            }
+            var linkedDatePicker = $(this).attr('data-link-date');
+            for(var i in graphList) {
+                if(graphList[i].idName == linkedDatePicker) {
+                    graphList[i].sensorType = sensorType;
+                    graphList[i].name = moment($('#'+linkedDatePicker).datepicker('getDate')).format('MMMM YYYY') + nameType;
                     break;
                 }
             }
@@ -66,10 +97,9 @@
     }
 
     $(document).ready(function() {
-        graphList.push({'month':'07','idName':'graph1','name':'July 2012'});
+        addGraphPanel();
         renderGraph();
         resizeGraph();
-        setupDatePicker();
         setupTabs();
     });
 
@@ -92,17 +122,17 @@
                 graphData.push(graphCache[graphName]);
                 finaliseRender();
             } else {
-                LoadQuery(graphList[i].month, graphName);
+                LoadQuery(graphList[i].month, graphList[i].sensorType, graphName);
             }
         }
     }
 
-    function LoadQuery(month,name) {
+    function LoadQuery(month,sensorType,name) {
         var queryStoreUrl = 'query';
         if($('#datastore-select').val() == 'Through Web Observatory') {
             queryStoreUrl = 'querywo';
         }
-        $.get('/'+queryStoreUrl+'/temperature_by_day?month='+encodeURIComponent(month),function(data){
+        $.get('/'+queryStoreUrl+'/temperature_by_day?month='+encodeURIComponent(month)+'&type='+encodeURIComponent(sensorType),function(data){
             if(data=="") {
                 $('.loading-msg').text('Error!');
             }
@@ -166,7 +196,7 @@
                 .y(function(d) { return d['high'] })
                 .duration(250)
                 .margin({left: 75, bottom: 50})
-                .forceY([62,90]);
+                .forceY([32,100]);
             chart.interactiveLayer.tooltip.contentGenerator(function(data) {
                 var dataObj = data['series'][0];
                 return dataObj['data']['x'] + ' ' + dataObj['key'] + ' (' +  d3.format(',.1f')(dataObj['data']['low']) + '&#8457; - ' + d3.format(',.1f')(dataObj['data']['high']) + '&#8457;)';
