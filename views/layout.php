@@ -35,6 +35,11 @@
 
 <body>
 
+<?php
+    if(file_exists('tracking.php'))
+        include_once("tracking.php")
+?>
+
 <?php echo $header_content; ?>
 
 <?php echo $body_content; ?>
