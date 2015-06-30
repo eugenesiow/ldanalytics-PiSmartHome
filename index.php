@@ -32,6 +32,14 @@ Flight::route('/info/@pageName', function($pageName){
     return true;
 });
 
+Flight::route('/iot', function(){
+    Flight::render('iot/index.html');
+});
+
+Flight::route('/iot.owl', function(){
+    Flight::redirect('iot/iot.owl');
+});
+
 Flight::route('*', function(){
     Flight::render('layout', array('title' => 'PiSmartHome'));
 });

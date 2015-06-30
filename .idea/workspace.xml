@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d939dde8-79d3-4a9e-be86-6ace065d9315" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/descriptive-tempday.php" afterPath="$PROJECT_DIR$/views/descriptive-tempday.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/descriptive-temphour.php" afterPath="$PROJECT_DIR$/views/descriptive-temphour.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/queries/temperature_by_day.txt" afterPath="$PROJECT_DIR$/queries/temperature_by_day.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/queries/temperature_by_hour.txt" afterPath="$PROJECT_DIR$/queries/temperature_by_hour.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/template.css" afterPath="$PROJECT_DIR$/css/template.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/basic_ontology_ssn.png" afterPath="$PROJECT_DIR$/img/basic_ontology_ssn.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/info/datamodel.php" afterPath="$PROJECT_DIR$/views/info/datamodel.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
     </list>
     <ignored path="pismarthome.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,8 +32,18 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="340" max-vertical-offset="782">
-              <caret line="20" column="3" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="3" />
+            <state vertical-scroll-proportion="-25.5" vertical-offset="0" max-vertical-offset="918">
+              <caret line="39" column="33" selection-start-line="39" selection-start-column="33" selection-end-line="39" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="datamodel.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/info/datamodel.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5022727" vertical-offset="0" max-vertical-offset="880">
+              <caret line="26" column="73" selection-start-line="26" selection-start-column="73" selection-end-line="26" selection-end-column="73" />
               <folding />
             </state>
           </provider>
@@ -45,8 +52,8 @@
       <file leaf-file-name="dataset.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/info/dataset.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="442">
-              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+            <state vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="442">
+              <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -72,11 +79,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="descriptive-tempday.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="descriptive-tempday.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/descriptive-tempday.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.31466964" vertical-offset="2949" max-vertical-offset="3842">
-              <caret line="190" column="41" selection-start-line="190" selection-start-column="41" selection-end-line="190" selection-end-column="41" />
+            <state vertical-scroll-proportion="-7.5384617" vertical-offset="2949" max-vertical-offset="3842">
+              <caret line="185" column="21" selection-start-line="185" selection-start-column="21" selection-end-line="185" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -105,8 +112,6 @@
         <option value="$PROJECT_DIR$/views/home.php" />
         <option value="$PROJECT_DIR$/views/info/dataset.php" />
         <option value="$PROJECT_DIR$/views/descriptive.php" />
-        <option value="$PROJECT_DIR$/views/info/datamodel.php" />
-        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/querywo.php" />
         <option value="$PROJECT_DIR$/token.php" />
         <option value="$PROJECT_DIR$/views/layout.php" />
@@ -115,6 +120,8 @@
         <option value="$PROJECT_DIR$/css/template.css" />
         <option value="$PROJECT_DIR$/views/descriptive-temphour.php" />
         <option value="$PROJECT_DIR$/views/descriptive-tempday.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/views/info/datamodel.php" />
       </list>
     </option>
   </component>
@@ -212,34 +219,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="queries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pismarthome" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pismarthome" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pismarthome" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pismarthome" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="img" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -322,8 +301,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -663,21 +642,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/info/datamodel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19318181" vertical-offset="0" max-vertical-offset="880">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="782">
-          <caret line="20" column="3" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/header.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34772727" vertical-offset="0" max-vertical-offset="880">
@@ -689,14 +653,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3617021" vertical-offset="0" max-vertical-offset="893">
           <caret line="19" column="53" selection-start-line="19" selection-start-column="53" selection-end-line="19" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/info/dataset.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="442">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -742,8 +698,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/descriptive-tempday.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31466964" vertical-offset="2949" max-vertical-offset="3842">
-          <caret line="190" column="41" selection-start-line="190" selection-start-column="41" selection-end-line="190" selection-end-column="41" />
+        <state vertical-scroll-proportion="-7.5384617" vertical-offset="2949" max-vertical-offset="3842">
+          <caret line="185" column="21" selection-start-line="185" selection-start-column="21" selection-end-line="185" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-25.5" vertical-offset="0" max-vertical-offset="918">
+          <caret line="39" column="33" selection-start-line="39" selection-start-column="33" selection-end-line="39" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/info/dataset.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="442">
+          <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/info/datamodel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5022727" vertical-offset="0" max-vertical-offset="880">
+          <caret line="26" column="73" selection-start-line="26" selection-start-column="73" selection-end-line="26" selection-end-column="73" />
           <folding />
         </state>
       </provider>
