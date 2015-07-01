@@ -14,21 +14,26 @@ Flight::route('/querywo/@type', 'querywo');
 
 Flight::route('/sparql/@type', 'sparql');
 
+Flight::route('/docs/@type', 'docs');
+
 Flight::route('/', function(){
     Flight::render('header', array('activePage' => 'Home'), 'header_content');
     Flight::render('home', array(), 'body_content');
+    Flight::render('blank', array(), 'body_code');
     return true;
 });
 
 Flight::route('/analytics/@class/@type', function($class,$type){
     Flight::render('header', array('activePage' => ucfirst($class)), 'header_content');
-    Flight::render($class.'-'.$type, array(), 'body_content');
+    Flight::render('analytics', array(), 'body_content');
+    Flight::render($class.'-'.$type, array(), 'body_code');
     return true;
 });
 
 Flight::route('/info/@pageName', function($pageName){
     Flight::render('header', array('activePage' => 'Information'), 'header_content');
     Flight::render('info/'.$pageName, array(), 'body_content');
+    Flight::render('blank', array(), 'body_code');
     return true;
 });
 

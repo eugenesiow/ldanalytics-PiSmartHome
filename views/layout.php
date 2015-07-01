@@ -44,5 +44,7 @@
 
 <?php echo $body_content; ?>
 
+<?php echo $body_code; ?>
+
 </body>
 </html>

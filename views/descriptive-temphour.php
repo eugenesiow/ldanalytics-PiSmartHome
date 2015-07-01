@@ -1,45 +1,27 @@
-<div class="container-fluid">
-
-    <div class="row">
-        <div class="col-md-2">
-            <select id="datastore-select" class="selectpicker" data-width="100%" data-style="btn-info">
-                <option data-store="direct">Query Pi Directly</option>
-                <option data-store="wo">Through Web Observatory</option>
-            </select><p></p>
-            <button id="add-graph-btn" type="button" class="btn btn-default">Add</button>
-        </div>
-        <div class="col-md-10">
-            <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#viz" aria-controls="sparql" role="tab" data-toggle="tab">Viz</a></li>
-                <li role="presentation"><a href="#sparql" aria-controls="sparql" role="tab" data-toggle="tab">SPARQL</a></li>
-            </ul>
-            <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active" id="viz">
-                    <svg id="graphcanvas"></svg>
-                </div>
-                <div role="tabpanel" class="tab-pane" id="sparql"><pre id="sparql-code" class="tab-pane-content"></pre></div>
-            </div>
-        </div>
-    </div>
-
-</div><!-- /.container -->
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.5/js/bootstrap-select.min.js"></script>
 <script src="/js/bootstrap-datepicker.min.js"></script>
 <script src="/js/nv.d3.min.js"></script>
+<script src="/js/common.js"></script>
 <script>
     var graphList = [];
     var graphData = [];
     var graphCache = {};
-    var termNames = {'inName':'InternalTemperatureValue','exName':'ExternalTemperatureValue','inDes':'Internal Temperature','exDes':'External Temperature','inLabel':' (In)','exLabel': ' (Ex)'};
+    var termNames = {
+        'queryName':'temperature_by_hour',
+        'queryLabel':'Temperature By Hour',
+        'inName':'InternalTemperatureValue',
+        'exName':'ExternalTemperatureValue',
+        'inDes':'Internal Temperature',
+        'exDes':'External Temperature',
+        'inLabel':' (In)',
+        'exLabel': ' (Ex)'};
 
     function setupButtons() {
-        $('#add-graph-btn').on('click', function () {
+        var addBtn = $('<button>',{'class':'btn btn-default','type':'button','id':'add-graph-btn'}).text('Add');
+        $('#sidebar').append(addBtn);
+        addBtn.on('click', function () {
             var newGraphId = addGraphPanel();
             $('#'+newGraphId).datepicker('show');
             $('#'+newGraphId).datepicker().on('hide',function(){
@@ -99,7 +81,7 @@
 
     function addGraphPanel() {
         var newGraphId = 'graph'+(graphList.length+1);
-        var panel = $('<div>',{'class':'panel panel-default'}).append($('<div>',{'text':'Temperature By Hour','class':'panel-heading'}));
+        var panel = $('<div>',{'class':'panel panel-default'}).append($('<div>',{'text':termNames.queryLabel,'class':'panel-heading'}));
         var dateSelect = $('<div>',{'class':'input-group date date-selector','id':newGraphId})
             .append('<input type="text" class="form-control" value="19/07/2012"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>');
         var typeSelect =  $('<select>',{'class':'selectpicker','data-link-date':newGraphId,'data-width':'100%'})
@@ -113,21 +95,13 @@
     }
 
     $(document).ready(function() {
+        setupButtons();
         addGraphPanel();
         renderGraph();
         resizeGraph();
-        setupButtons();
-        setupTabs();
+        setupTabs(termNames.queryName);
+        setupWindow();
     });
-
-    // window resize
-    $(window).resize(function() {
-        resizeGraph();
-    });
-
-    function resizeGraph() {
-        $('#graphcanvas').height($(document).height()-120);
-    }
 
     function renderGraph() {
         $('#graphcanvas').hide();
@@ -149,7 +123,7 @@
         if($('#datastore-select').val() == 'Through Web Observatory') {
             queryStoreUrl = 'querywo';
         }
-        $.get('/'+queryStoreUrl+'/temperature_by_hour?startDate='+encodeURIComponent(startDate)+'&endDate='+encodeURIComponent(endDate)+'&type='+encodeURIComponent(sensorType),function(data){
+        $.get('/'+queryStoreUrl+'/'+termNames.queryName+'?startDate='+encodeURIComponent(startDate)+'&endDate='+encodeURIComponent(endDate)+'&type='+encodeURIComponent(sensorType),function(data){
             if(data=="") {
                 $('.loading-msg').text('Error!');
             }
@@ -159,7 +133,7 @@
                 for(var i in resultSet) {
                     temperature.push({x:resultSet[i]['hours']['value'],y:resultSet[i]['sval']['value']});
                 }
-                temperature.sort(temperatureCompare);
+                temperature.sort(datumCompare);
                 var graphObj = {
                     values: temperature,      //values - represents the array of {x,y} data points
                     key: name //key  - the name of the series.
@@ -179,29 +153,6 @@
             $('.loading-msg').remove();
             $('#graphcanvas').show();
         }
-    }
-
-    function setupTabs() {
-        $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
-            var target = $(e.target).attr("href");
-            if ((target == '#sparql')) {
-                LoadSparql('temperature_by_hour');
-            }
-        });
-    }
-
-    function LoadSparql(queryType) {
-        $.get('/sparql/'+queryType,function(data){
-            $('#sparql-code').text(data);
-        });
-    }
-
-    function temperatureCompare(a,b) {
-        if (a.x < b.x)
-            return -1;
-        if (a.x > b.x)
-            return 1;
-        return 0;
     }
 
     function LoadGraph(data) {

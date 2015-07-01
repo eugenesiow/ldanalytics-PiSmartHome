@@ -1,4 +1,6 @@
 <?php
+require 'vendor/Parsedown.php';
+
 function query($type){
     if(!is_null($type)) {
         //get parameter data
@@ -32,4 +34,9 @@ function query($type){
 function sparql($type) {
     $query_string = file_get_contents('queries/'.$type.'.txt');
     echo $query_string;
+}
+
+function docs($type) {
+    $doc = file_get_contents('docs/'.$type.'.md');
+    echo Parsedown::instance()->text($doc);
 }
