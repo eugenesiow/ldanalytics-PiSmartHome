@@ -78,6 +78,10 @@ body {
     margin-bottom: 5px;
 }
 
+.table-nonfluid {
+    width: auto !important;
+}
+
 /*.date-selector {*/
     /*width:220px;*/
     /*margin-left:auto;*/

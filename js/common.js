@@ -40,3 +40,8 @@ function setupTabs(queryName) {
         }
     });
 }
+
+function formatLocation(loc) {
+    var replaced = loc.replace('http://iot.soton.ac.uk/smarthome/platform#','');
+    return replaced.charAt(0).toUpperCase() + replaced.slice(1);
+}

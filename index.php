@@ -5,8 +5,10 @@ require 'querywo.php';
 
 Flight::set('pageList',array('Home'=>'/',
     'Information'=>array('Data Model'=>'/info/datamodel','Datasets'=>'/info/dataset'),
-    'Descriptive'=>array('Temperature By Hour'=>'/analytics/descriptive/temphour','Temperature By Day'=>'/analytics/descriptive/tempday'),
-    'Discovery'=>'/analytics/discovery/home','Predictive'=>'/analytics/predictive/home'));
+    'Descriptive'=>array('Temperature By Hour'=>'/analytics/descriptive/temphour','Temperature By Day'=>'/analytics/descriptive/tempday','Energy Usage'=>'/analytics/descriptive/meters'),
+    'Diagnostic'=>array('Unattended Metering'=>'/analytics/diagnostic/unattended'),
+//    'Discovery'=>'/analytics/discovery/home','Predictive'=>'/analytics/predictive/home'
+));
 
 Flight::route('/query/@type', 'query');
 
@@ -43,6 +45,13 @@ Flight::route('/iot', function(){
 
 Flight::route('/iot.owl', function(){
     Flight::redirect('iot/iot.owl');
+});
+
+Flight::route('/clearcache', function(){
+    if(Flight::request()->query->id=='eugene') {
+        apc_clear_cache();
+        echo 'success';
+    }
 });
 
 Flight::route('*', function(){

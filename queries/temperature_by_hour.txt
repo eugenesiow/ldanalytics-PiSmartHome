@@ -12,6 +12,6 @@ WHERE {
     ssn:observationResult ?snout.
   ?snout ssn:hasValue ?obsval.
   ?obsval a iot:{type};
-    ssn:hasValue ?val.
+    iot:hasQuantityValue ?val.
   FILTER (?date > "{startDate}"^^xsd:dateTime && ?date < "{endDate}"^^xsd:dateTime)
 } GROUP BY (hours(xsd:dateTime(?date)) as ?hours)

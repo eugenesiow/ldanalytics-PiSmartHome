@@ -12,6 +12,6 @@ WHERE {
     ssn:observationResult ?snout.
   ?snout ssn:hasValue ?obsval.
   ?obsval a iot:{type};
-    ssn:hasValue ?val.
+    iot:hasQuantityValue ?val.
   FILTER (?date > "2012-{month}-01T00:00:00"^^xsd:dateTime && ?date < "2012-{month}-30T00:00:00"^^xsd:dateTime)
 } GROUP BY (day(xsd:dateTime(?date)) as ?day)

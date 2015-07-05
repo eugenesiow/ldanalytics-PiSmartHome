@@ -10,9 +10,7 @@
 
     <title><?php echo $title; ?></title>
 
-    <!-- Loaded here as common to all  -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -43,6 +41,10 @@
 <?php echo $header_content; ?>
 
 <?php echo $body_content; ?>
+
+<!-- Loaded here as common to all  -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 <?php echo $body_code; ?>
 
