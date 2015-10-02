@@ -131,7 +131,7 @@
                 var resultSet = JSON.parse(data)['results']['bindings'];
                 var temperature = [];
                 for(var i in resultSet) {
-                    temperature.push({x:resultSet[i]['hours']['value'],y:resultSet[i]['sval']['value']});
+                    temperature.push({x:resultSet[i]['HOURS']['value'],y:resultSet[i]['SVAL']['value']});
                 }
                 temperature.sort(datumCompare);
                 var graphObj = {

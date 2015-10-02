@@ -11,7 +11,7 @@ function query($type){
         if(apc_exists($cacheKey)) {
             echo apc_fetch($cacheKey);
         } else {
-            $url = 'http://localhost:3030/smarthome_tdb/query';
+            $url = 'http://localhost:8080/sparql';
             $query_string = file_get_contents('queries/' . $type . '.txt');
             foreach ($parameters as $key => $value) {
                 $query_string = str_replace('{' . $key . '}', $value, $query_string);

@@ -112,8 +112,8 @@
                 var rooms = {};
 
                 for(var i in resultSet) {
-                    var key = formatLocation(resultSet[i]['platform']['value']);
-                    var cell = {x:moment(resultSet[i]['dateOnly']['value']),y:parseFloat(resultSet[i]['totalpower']['value'])};
+                    var key = formatLocation(resultSet[i]['PLATFORM']['value']);
+                    var cell = {x:moment(resultSet[i]['DATEONLY']['value']),y:parseFloat(resultSet[i]['TOTALPOWER']['value'])};
                     if(key in rooms) {
                         rooms[key]['values'].push(cell);
                     } else {

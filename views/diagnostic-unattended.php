@@ -22,7 +22,7 @@
         $('#viz').append($('<div>').append('<h2>What metered device consumes power when it is unattended?</h2><hr>'));
         $('#viz').append($('<div>',{'id':'results-table'}));
         $('#graphcanvas').hide();
-        LoadQuery("2012-07-19T00:00:00","2012-07-20T00:00:00");
+        LoadQuery("2012-07-05T00:00:00","2012-07-06T00:00:00");
     }
 
     function LoadQuery(startDate,endDate) {
@@ -40,11 +40,11 @@
                 for(var i in resultSet) {
                     var results = resultSet[i];
                     resultTable.push({
-                        'Meter':results['name']['value'],
-                        'Date':results['motiondate']['value'],
-                        'Hour of Day':results['motionhours']['value'],
-                        'Location':formatLocation(results['motionplatform']['value']),
-                        'Power(Watts)':results['power']['value']
+                        'Meter':results['NAME']['value'],
+                        'Date':results['MOTIONDATE']['value'],
+                        'Hour of Day':results['MOTIONHOURS']['value'],
+                        'Location':formatLocation(results['MOTIONPLATFORM']['value']),
+                        'Power(Watts)':results['POWER']['value']
                     });
                 }
 
