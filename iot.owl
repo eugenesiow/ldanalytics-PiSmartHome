@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY dct "http://purl.org/dc/terms/" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://purl.oclc.org/NET/iot#"
+     xml:base="http://purl.oclc.org/NET/iot"
+     xmlns:dct="http://purl.org/dc/terms/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <owl:Ontology rdf:about="http://purl.oclc.org/NET/iot">
+        <dc:identifier>http://purl.oclc.org/NET/iot</dc:identifier>
+        <dct:created>2015-06-30</dct:created>
+        <dc:title>Semantic Internet of Things Ontology</dc:title>
+        <rdfs:comment>Semantic Internet of Things ontology that extends the Semantic Sensor Ontology for Internet of Things devices</rdfs:comment>
+        <owl:imports rdf:resource="http://purl.oclc.org/NET/ssnx/ssn"/>
+        <owl:imports rdf:resource="http://www.w3.org/2006/time"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.oclc.org/NET/iot#hasQuantityValue -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.oclc.org/NET/iot#hasQuantityValue">
+        <rdfs:domain rdf:resource="http://purl.oclc.org/NET/iot#QuantityObservationValue"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.loa-cnr.it/ontologies/DUL.owl#hasDataValue"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.oclc.org/NET/iot#ExternalTemperatureValue -->
+
+    <owl:Class rdf:about="http://purl.oclc.org/NET/iot#ExternalTemperatureValue">
+        <rdfs:label>External Temperature Value</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.oclc.org/NET/iot#QuantityObservationValue"/>
+        <rdfs:comment>The external temperature measured from the environment, not within an enclosed area.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.oclc.org/NET/iot#InternalTemperatureValue -->
+
+    <owl:Class rdf:about="http://purl.oclc.org/NET/iot#InternalTemperatureValue">
+        <rdfs:label>Internal Temperature Value</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.oclc.org/NET/iot#QuantityObservationValue"/>
+        <rdfs:comment>An internal temperature value within an enclosed area.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.oclc.org/NET/iot#QuantityObservationValue -->
+
+    <owl:Class rdf:about="http://purl.oclc.org/NET/iot#QuantityObservationValue">
+        <rdfs:label>Quantity observation value</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#ObservationValue"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.oclc.org/NET/iot#hasQuantityValue"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>Enables the extension of ssn:ObservationValue to provide assertions on units of measurement, etc.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.oclc.org/NET/iot#WeatherObservation -->
+
+    <owl:Class rdf:about="http://purl.oclc.org/NET/iot#WeatherObservation">
+        <rdfs:label>Weather Observation</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#Observation"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#observedBy"/>
+                <owl:allValuesFrom rdf:resource="http://purl.oclc.org/NET/iot#WeatherSensor"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#observationResult"/>
+                <owl:allValuesFrom rdf:resource="http://purl.oclc.org/NET/iot#WeatherSensorOutput"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#observationSamplingTime"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2006/time#Instant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>A class describing weather observations. Properties ssn:observationResult, ssn:observationSamplingTime and ssn:observedBy are restricted accordingly.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.oclc.org/NET/iot#WeatherSensor -->
+
+    <owl:Class rdf:about="http://purl.oclc.org/NET/iot#WeatherSensor">
+        <rdfs:label>Weather Sensor</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#SensingDevice"/>
+        <rdfs:comment>WeatherSensor is a subclass of sensing devices which measures various effects of the weather like temperature, humidity, rain or wind.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.oclc.org/NET/iot#WeatherSensorOutput -->
+
+    <owl:Class rdf:about="http://purl.oclc.org/NET/iot#WeatherSensorOutput">
+        <rdfs:label>Weather sensor output</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#SensorOutput"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#isProducedBy"/>
+                <owl:allValuesFrom rdf:resource="http://purl.oclc.org/NET/iot#WeatherSensor"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#hasValue"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://purl.oclc.org/NET/iot#ExternalTemperatureValue"/>
+                            <rdf:Description rdf:about="http://purl.oclc.org/NET/iot#InternalTemperatureValue"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>A class describing sensor output for measurements from a weather sensor. Properties ssn:hasValue and ssn:isProducedBy are restricted accordingly.</rdfs:comment>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+

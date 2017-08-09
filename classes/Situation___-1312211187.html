@@ -1,0 +1,93 @@
+<html><head>
+<title>Class: Situation</title>
+<meta http-equiv='content-type' content='text/html;charset=utf8'>
+<link rel='stylesheet' href='../default.css' type='text/css' />
+</head>
+<body>
+<h1>Class: Situation</h1>
+<h2 class='summaryURI'>http://www.loa-cnr.it/ontologies/DUL.owl#Situation</h2>
+<h2>Annotations (3)</h2>
+<div class='codebox' id='annotations_(3)'>
+<ul>
+<li>
+<a href="../annotationproperties/comment___1501100887.html" title="http://www.w3.org/2000/01/rdf-schema#comment">comment</a> <span class='literal'>"A view, consistent with ('satisfying') a Description, on a set of entities. 
+It can also be seen as a 'relational context' created by an observer on the basis of a 'frame' (i.e. a Description). 
+For example, a PlanExecution is a context including some actions executed by agents according to certain parameters and expected tasks to be achieved from a Plan; a DiagnosedSituation is a context of observed entities that is interpreted on the basis of a Diagnosis, etc.
+Situation is also able to represent reified n-ary relations, where isSettingFor is the top-level relation for all binary projections of the n-ary relation. If used in a transformation pattern for n-ary relations, the designer should take care of creating only one subclass of Situation for each n-ary relation, otherwise the 'identification constraint' (Calvanese et al., IJCAI 2001) could be violated."</span> (<a href="../datatypes/string___799955032.html" title="http://www.w3.org/2001/XMLSchema#string">string</a>)</li>
+<li>
+<a href="../annotationproperties/label___653429740.html" title="http://www.w3.org/2000/01/rdf-schema#label">label</a> <span class='literal'>"Situation" <span style='color: black;'>(en)</span></span></li>
+<li>
+<a href="../annotationproperties/label___653429740.html" title="http://www.w3.org/2000/01/rdf-schema#label">label</a> <span class='literal'>"Situazione" <span style='color: black;'>(it)</span></span></li>
+</ul>
+</div><!-- annotations (3) -->
+<h2>Superclasses (2)</h2>
+<div class='codebox' id='superclasses_(2)'>
+<ul>
+<li>
+<a href="SocialObject___-825640357.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#SocialObject">'Social object'</a></li>
+<li>
+<a href="../objectproperties/satisfies___-406136464.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#satisfies">satisfies</a> <span class='some'>some</span> <a href="Description___995488011.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#Description">Description</a></li>
+</ul>
+</div><!-- superclasses (2) -->
+<h2>Disjoints (4)</h2>
+<div class='codebox' id='disjoints_(4)'>
+<a href="InformationObject___-1554155366.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#InformationObject">'Information object'</a>, <a href="SocialAgent___701711527.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#SocialAgent">'Social agent'</a>, <a href="Concept___-627124361.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#Concept">Concept</a>, <a href="Description___995488011.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#Description">Description</a></div><!-- disjoints (4) -->
+<h2>Usage (26)</h2>
+<div class='codebox' id='usage_(26)'>
+<ul>
+<li>
+<span class='keyword'>Class</span>: <span class='active-entity'>Situation</span></li>
+<li>
+<a href="PlanExecution___-1623452930.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#PlanExecution">'Plan execution'</a> <span class='keyword'>≡</span> <span class='active-entity'>Situation</span> <span class='keyword'>and</span> <a href="../objectproperties/satisfies___-406136464.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#satisfies">satisfies</a> <span class='some'>some</span> <a href="Plan___1054655608.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#Plan">Plan</a></li>
+<li>
+<a href="SocialObject___-825640357.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#SocialObject">'Social object'</a> <span class='keyword'>≡</span> <a href="SocialAgent___701711527.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#SocialAgent">'Social agent'</a> <span class='keyword'>or</span> <span class='active-entity'>Situation</span> <span class='keyword'>or</span> <a href="Place___1129360918.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#Place">Place</a> <span class='keyword'>or</span> <a href="InformationObject___-1554155366.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#InformationObject">'Information object'</a> <span class='keyword'>or</span> <a href="Description___995488011.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#Description">Description</a> <span class='keyword'>or</span> <a href="Concept___-627124361.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#Concept">Concept</a> <span class='keyword'>or</span> <a href="Collection___1304317933.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#Collection">Collection</a></li>
+<li>
+<a href="Transition___1321471652.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#Transition">Transition</a> <span class='keyword'>⊆</span> <a href="../objectproperties/isSettingFor___-1075485102.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#isSettingFor">'is setting for'</a> <span class='some'>some</span> <span class='active-entity'>Situation</span></li>
+<li>
+<a href="../objectproperties/hasPostcondition___-1536985808.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#hasPostcondition">'has postcondition'</a> <span class='keyword'>Domain</span> <span class='active-entity'>Situation</span></li>
+<li>
+<a href="../objectproperties/hasPrecondition___1555928769.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#hasPrecondition">'has precondition'</a> <span class='keyword'>Domain</span> <span class='active-entity'>Situation</span></li>
+<li>
+<a href="../objectproperties/includesAction___-313693168.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#includesAction">'includes action'</a> <span class='keyword'>Domain</span> <span class='active-entity'>Situation</span></li>
+<li>
+<a href="../objectproperties/includesAgent___38379049.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#includesAgent">'includes agent'</a> <span class='keyword'>Domain</span> <span class='active-entity'>Situation</span></li>
+<li>
+<a href="../objectproperties/includesEvent___42519998.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#includesEvent">'includes event'</a> <span class='keyword'>Domain</span> <span class='active-entity'>Situation</span></li>
+<li>
+<a href="../objectproperties/includesObject___85889305.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#includesObject">'includes object'</a> <span class='keyword'>Domain</span> <span class='active-entity'>Situation</span></li>
+<li>
+<a href="../objectproperties/includesTime___1020030823.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#includesTime">'includes time'</a> <span class='keyword'>Domain</span> <span class='active-entity'>Situation</span></li>
+<li>
+<a href="../objectproperties/isPostconditionOf___-1778215337.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#isPostconditionOf">'is postcondition of'</a> <span class='keyword'>Domain</span> <span class='active-entity'>Situation</span></li>
+<li>
+<a href="../objectproperties/isPreconditionOf___1037845192.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#isPreconditionOf">'is precondition of'</a> <span class='keyword'>Domain</span> <span class='active-entity'>Situation</span></li>
+<li>
+<a href="../objectproperties/isSettingFor___-1075485102.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#isSettingFor">'is setting for'</a> <span class='keyword'>Domain</span> <span class='active-entity'>Situation</span></li>
+<li>
+<a href="../objectproperties/satisfies___-406136464.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#satisfies">satisfies</a> <span class='keyword'>Domain</span> <span class='active-entity'>Situation</span></li>
+<li>
+<a href="../objectproperties/hasPostcondition___-1536985808.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#hasPostcondition">'has postcondition'</a> <span class='keyword'>Range</span> <span class='active-entity'>Situation</span></li>
+<li>
+<a href="../objectproperties/hasPrecondition___1555928769.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#hasPrecondition">'has precondition'</a> <span class='keyword'>Range</span> <span class='active-entity'>Situation</span></li>
+<li>
+<a href="../objectproperties/hasSetting___775526277.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#hasSetting">'has setting'</a> <span class='keyword'>Range</span> <span class='active-entity'>Situation</span></li>
+<li>
+<a href="../objectproperties/isActionIncludedIn___1177361488.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#isActionIncludedIn">'is action included in'</a> <span class='keyword'>Range</span> <span class='active-entity'>Situation</span></li>
+<li>
+<a href="../objectproperties/isAgentIncludedIn___-496427381.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#isAgentIncludedIn">'is agent included in'</a> <span class='keyword'>Range</span> <span class='active-entity'>Situation</span></li>
+<li>
+<a href="../objectproperties/isEventIncludedIn___-2049599520.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#isEventIncludedIn">'is event included in'</a> <span class='keyword'>Range</span> <span class='active-entity'>Situation</span></li>
+<li>
+<a href="../objectproperties/isObjectIncludedIn___-694269415.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#isObjectIncludedIn">'is object included in'</a> <span class='keyword'>Range</span> <span class='active-entity'>Situation</span></li>
+<li>
+<a href="../objectproperties/isPostconditionOf___-1778215337.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#isPostconditionOf">'is postcondition of'</a> <span class='keyword'>Range</span> <span class='active-entity'>Situation</span></li>
+<li>
+<a href="../objectproperties/isPreconditionOf___1037845192.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#isPreconditionOf">'is precondition of'</a> <span class='keyword'>Range</span> <span class='active-entity'>Situation</span></li>
+<li>
+<a href="../objectproperties/isSatisfiedBy___-1626654258.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#isSatisfiedBy">'is satisfied by'</a> <span class='keyword'>Range</span> <span class='active-entity'>Situation</span></li>
+<li>
+<a href="../objectproperties/isTimeIncludedIn___-1084020057.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#isTimeIncludedIn">'is time included in'</a> <span class='keyword'>Range</span> <span class='active-entity'>Situation</span></li>
+</ul>
+</div><!-- usage (26) -->
+<p class='footer'>
+</body></html>

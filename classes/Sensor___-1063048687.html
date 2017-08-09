@@ -1,0 +1,59 @@
+<html><head>
+<title>Class: Sensor</title>
+<meta http-equiv='content-type' content='text/html;charset=utf8'>
+<link rel='stylesheet' href='../default.css' type='text/css' />
+</head>
+<body>
+<h1>Class: Sensor</h1>
+<h2 class='summaryURI'>http://purl.oclc.org/NET/ssnx/ssn#Sensor</h2>
+<h2>Annotations (5)</h2>
+<div class='codebox' id='annotations_(5)'>
+<ul>
+<li>
+<a href="../annotationproperties/source___-1351912666.html" title="http://purl.org/dc/elements/1.1/source">source</a> <span class='literal'>"skos:exactMatch 'sensor' [SensorML OGC-0700]
+		                    http://www.opengeospatial.org/standards/sensorml 
+
+                                skos:closeMatch 'observation procedure' [O&M] 
+                                http://www.opengeospatial.org/standards/om 
+
+O&M allows sensors, methods, instruments, systems, algorithms and process chains as the processUsed of an observation; this ontology allows a similar range of things (any thing that can do sensing), just they are all grouped under the term sensor (which is thus wider than the O&M concept)." <span style='color: black;'>()</span></span></li>
+<li>
+<a href="../annotationproperties/comment___1501100887.html" title="http://www.w3.org/2000/01/rdf-schema#comment">comment</a> <span class='literal'>"A sensor can do (implements) sensing: that is, a sensor is any entity that can follow a sensing method and thus observe some Property of a FeatureOfInterest.  Sensors may be physical devices, computational methods, a laboratory setup with a person following a method, or any other thing that can follow a Sensing Method to observe a Property." <span style='color: black;'>()</span></span></li>
+<li>
+<a href="../annotationproperties/isDefinedBy___449337134.html" title="http://www.w3.org/2000/01/rdf-schema#isDefinedBy">isDefinedBy</a> <span class='literal'>"<a href='http://purl.oclc.org/NET/ssnx/ssn' target='ext_ref'>http://purl.oclc.org/NET/ssnx/ssn</a>" <span style='color: black;'>()</span></span></li>
+<li>
+<a href="../annotationproperties/label___653429740.html" title="http://www.w3.org/2000/01/rdf-schema#label">label</a> <span class='literal'>"Sensor" <span style='color: black;'>()</span></span></li>
+<li>
+<a href="../annotationproperties/seeAlso___-1773693006.html" title="http://www.w3.org/2000/01/rdf-schema#seeAlso">seeAlso</a> <span class='literal'>"<a href='http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Skeleton#Skeleton' target='ext_ref'>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Skeleton#Skeleton</a>" <span style='color: black;'>()</span></span></li>
+</ul>
+</div><!-- annotations (5) -->
+<h2>Superclasses (5)</h2>
+<div class='codebox' id='superclasses_(5)'>
+<ul>
+<li>
+<a href="PhysicalObject___23249989.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#PhysicalObject">'Physical object'</a></li>
+<li>
+<a href="../objectproperties/implements___-156352025.html" title="http://purl.oclc.org/NET/ssnx/ssn#implements">implements</a> <span class='some'>some</span> <a href="Sensing___109088514.html" title="http://purl.oclc.org/NET/ssnx/ssn#Sensing">Sensing</a></li>
+<li>
+<a href="../objectproperties/detects___-1978099609.html" title="http://purl.oclc.org/NET/ssnx/ssn#detects">detects</a> <span class='only'>only</span> <a href="Stimulus___-1930035567.html" title="http://purl.oclc.org/NET/ssnx/ssn#Stimulus">Stimulus</a></li>
+<li>
+<a href="../objectproperties/hasMeasurementCapability___-1744073295.html" title="http://purl.oclc.org/NET/ssnx/ssn#hasMeasurementCapability">'has measurement  capability'</a> <span class='only'>only</span> <a href="MeasurementCapability___-1400136693.html" title="http://purl.oclc.org/NET/ssnx/ssn#MeasurementCapability">'Measurement Capability'</a></li>
+<li>
+<a href="../objectproperties/observes___1107639566.html" title="http://purl.oclc.org/NET/ssnx/ssn#observes">observes</a> <span class='only'>only</span> <a href="Property___-169464788.html" title="http://purl.oclc.org/NET/ssnx/ssn#Property">Property</a></li>
+</ul>
+</div><!-- superclasses (5) -->
+<h2>Usage (4)</h2>
+<div class='codebox' id='usage_(4)'>
+<ul>
+<li>
+<span class='keyword'>Class</span>: <span class='active-entity'>Sensor</span></li>
+<li>
+<a href="Observation___-1745720765.html" title="http://purl.oclc.org/NET/ssnx/ssn#Observation">Observation</a> <span class='keyword'>⊆</span> <a href="../objectproperties/observedBy___763081590.html" title="http://purl.oclc.org/NET/ssnx/ssn#observedBy">observedBy</a> <span class='only'>only</span> <span class='active-entity'>Sensor</span></li>
+<li>
+<a href="Observation___-1745720765.html" title="http://purl.oclc.org/NET/ssnx/ssn#Observation">Observation</a> <span class='keyword'>⊆</span> <a href="../objectproperties/observedBy___763081590.html" title="http://purl.oclc.org/NET/ssnx/ssn#observedBy">observedBy</a><span class='exactly'> exactly </span>1 <span class='active-entity'>Sensor</span></li>
+<li>
+<a href="SensorOutput___586965938.html" title="http://purl.oclc.org/NET/ssnx/ssn#SensorOutput">'Sensor Output'</a> <span class='keyword'>⊆</span> <a href="../objectproperties/isProducedBy___387902972.html" title="http://purl.oclc.org/NET/ssnx/ssn#isProducedBy">'is produced by'</a> <span class='some'>some</span> <span class='active-entity'>Sensor</span></li>
+</ul>
+</div><!-- usage (4) -->
+<p class='footer'>
+</body></html>

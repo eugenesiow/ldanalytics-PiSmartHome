@@ -1,0 +1,100 @@
+<html><head>
+<title>Class: Event</title>
+<meta http-equiv='content-type' content='text/html;charset=utf8'>
+<link rel='stylesheet' href='../default.css' type='text/css' />
+</head>
+<body>
+<h1>Class: Event</h1>
+<h2 class='summaryURI'>http://www.loa-cnr.it/ontologies/DUL.owl#Event</h2>
+<h2>Annotations (3)</h2>
+<div class='codebox' id='annotations_(3)'>
+<ul>
+<li>
+<a href="../annotationproperties/comment___1501100887.html" title="http://www.w3.org/2000/01/rdf-schema#comment">comment</a> <span class='literal'>"Any physical, social, or mental process, event, or state.
+
+More theoretically, events can be classified in different ways, possibly based on 'aspect' (e.g. stative, continuous, accomplishement, achievement, etc.), on 'agentivity' (e.g. intentional, natural, etc.), or on 'typical participants' (e.g. human, physical, abstract, food, etc.).
+Here no special direction is taken, and the following explains why: events are related to observable situations, and they can have different views at a same time.
+If a position has to be suggested here anyway, the participant-based classification of events seems the most stable and appropriate for many modelling problems.
+
+(1) Alternative aspectual views
+
+Consider a same event 'rock erosion in the Sinni valley': it can be conceptualized as an accomplishment (what has brought a certain state to occur), as an achievement (the state resulting from a previous accomplishment), as a punctual event (if we collapse the time interval of the erosion into a time point), or as a transition (something that has changed a state to a different one). 
+In the erosion case, we could therefore have good motivations to shift from one aspect to another: a) causation focus, b) effectual focus, c) historical condensation d) transition (causality).
+
+The different views refer to the same event, but are still different: how to live with this seeming paradox? 
+A typical solution e.g. in linguistics (cf. Levin's aspectual classes) and in DOLCE Full (cf. WonderWeb D18 axiomatization) is to classify events based on aspectual differences. But this solution would create different identities for a same event, where the difference is only based on the modeller's attitude.
+An alternative solution is applied here, and exploits the notion of (observable) Situation; a Situation is a view, consistent with a Description, which can be observed of a set of entities. It can also be seen as a 'relational context' created by an observer on the basis of a 'frame'. Therefore, a Situation allows to create a context where each particular view can have a proper identity, while the Event preserves its own identity. 
+For example, ErosionAsAccomplishment is a Situation where rock erosion is observed as a process leading to a certain achievement: the conditions (roles, parameters) that suggest such view are stated in a Description, which acts as a 'theory of accomplishments'. Similarly, ErosionAsTransition is a Situation where rock erosion is observed as an event that has changed a state to another: the conditions for such interpretation are stated in a different Description, which acts as a 'theory of state transitions'.
+Consider that in no case the Event is changed or enriched in parts by the aspectual view.
+
+(2) Alternative intentionality views
+
+Similarly to aspectual views, several intentionality views can be provided for a same Event. For example, one can investigate if an avalanche has been caused by immediate natural forces, or if there is any hint of an intentional effort to activate those natural forces.
+Also in this case, the Event as such has not different identities, while the causal analysis generates situations with different identities, according to what Description is taken for interpreting the Event. 
+On the other hand, if the possible actions of an Agent causing the starting of an avalanche are taken as parts of the Event, then this makes its identity change, because we are adding a part to it. 
+Therefore, if intentionality is a criterion to classify events or not depends on if an ontology designer wants to consider causality as a relevant dimension for events' identity.
+
+(3) Alternative participant views
+
+A slightly different case is when we consider the basic participants to an Event. In this case, the identity of the Event is affected by the participating objects, because it depends on them. 
+For example, if snow, mountain slopes, wind, waves, etc. are considered as an avalanche basic participants, or if we also want to add water, human agents, etc., makes the identity of an avalanche change.
+Anyway, this approach to event classification is based on the designer's choices, and more accurately mirrors lexical or commonsense classifications (see. e.g. WordNet 'supersenses' for verb synsets).
+
+Ultimately, this discussion has no end, because realists will keep defending the idea that events in reality are not changed by the way we describe them, while constructivists will keep defending the idea that, whatever 'true reality' is about, it can't be modelled without the theoretical burden of how we observe and describe it. 
+Both positions are in principle valid, but, if taken too radically, they focus on issues that are only partly relevant to the aim of computational ontologies, which only attempt to assist domain experts in representing what they want to conceptualize about a certain portion of reality according to their own ideas. 
+For this reason, in this ontology both events and situations are allowed, together with descriptions, in order to encode the modelling needs independently from the position (if any) chosen by the designer."</span> (<a href="../datatypes/string___799955032.html" title="http://www.w3.org/2001/XMLSchema#string">string</a>)</li>
+<li>
+<a href="../annotationproperties/label___653429740.html" title="http://www.w3.org/2000/01/rdf-schema#label">label</a> <span class='literal'>"Event" <span style='color: black;'>(en)</span></span></li>
+<li>
+<a href="../annotationproperties/label___653429740.html" title="http://www.w3.org/2000/01/rdf-schema#label">label</a> <span class='literal'>"Evento" <span style='color: black;'>(it)</span></span></li>
+</ul>
+</div><!-- annotations (3) -->
+<h2>Superclasses (4)</h2>
+<div class='codebox' id='superclasses_(4)'>
+<ul>
+<li>
+<a href="Entity___-1162242766.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#Entity">Entity</a></li>
+<li>
+<a href="../objectproperties/hasParticipant___1718289768.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#hasParticipant">'has participant'</a> <span class='some'>some</span> <a href="Object___-887335794.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#Object">Object</a></li>
+<li>
+<a href="../objectproperties/hasConstituent___-895602855.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#hasConstituent">'has constituent'</a> <span class='only'>only</span> <span class='active-entity'>Event</span></li>
+<li>
+<a href="../objectproperties/hasPart___1748980444.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#hasPart">'has part'</a> <span class='only'>only</span> <span class='active-entity'>Event</span></li>
+</ul>
+</div><!-- superclasses (4) -->
+<h2>Disjoints (3)</h2>
+<div class='codebox' id='disjoints_(3)'>
+<a href="Abstract___-1445258895.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#Abstract">Abstract</a>, <a href="Object___-887335794.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#Object">Object</a>, <a href="Quality___-926933490.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#Quality">Quality</a></div><!-- disjoints (3) -->
+<h2>Usage (13)</h2>
+<div class='codebox' id='usage_(13)'>
+<ul>
+<li>
+<span class='keyword'>Class</span>: <span class='active-entity'>Event</span></li>
+<li>
+<a href="Entity___-1162242766.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#Entity">Entity</a> <span class='keyword'>≡</span> <a href="Region___-798762941.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#Region">Region</a> <span class='keyword'>or</span> <a href="Quality___-926933490.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#Quality">Quality</a> <span class='keyword'>or</span> <a href="Object___-887335794.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#Object">Object</a> <span class='keyword'>or</span> <span class='active-entity'>Event</span> <span class='keyword'>or</span> <a href="Abstract___-1445258895.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#Abstract">Abstract</a></li>
+<li>
+<a href="InformationRealization___-2057769591.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#InformationRealization">'Information realization'</a> <span class='keyword'>≡</span> <a href="PhysicalObject___23249989.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#PhysicalObject">'Physical object'</a> <span class='keyword'>or</span> <span class='active-entity'>Event</span> <span class='keyword'>and</span> <a href="../objectproperties/hasParticipant___1718289768.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#hasParticipant">'has participant'</a> <span class='some'>some</span> <a href="PhysicalObject___23249989.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#PhysicalObject">'Physical object'</a> <span class='keyword'>and</span> <a href="../objectproperties/realizes___192655724.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#realizes">realizes</a> <span class='some'>some</span> <a href="InformationObject___-1554155366.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#InformationObject">'Information object'</a></li>
+<li>
+<a href="FeatureOfInterest___1742739406.html" title="http://purl.oclc.org/NET/ssnx/ssn#FeatureOfInterest">'Feature of Interest'</a> <span class='keyword'>⊆</span> <a href="Object___-887335794.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#Object">Object</a> <span class='keyword'>or</span> <span class='active-entity'>Event</span></li>
+<li>
+<a href="EventType___-1207403005.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#EventType">'Event type'</a> <span class='keyword'>⊆</span> <a href="../objectproperties/classifies___770694993.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#classifies">classifies</a> <span class='only'>only</span> <span class='active-entity'>Event</span></li>
+<li>
+<a href="Object___-887335794.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#Object">Object</a> <span class='keyword'>⊆</span> <a href="../objectproperties/isParticipantIn___1978995677.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#isParticipantIn">'is participant in'</a> <span class='some'>some</span> <span class='active-entity'>Event</span></li>
+<li>
+<a href="../objectproperties/hasParticipant___1718289768.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#hasParticipant">'has participant'</a> <span class='keyword'>Domain</span> <span class='active-entity'>Event</span></li>
+<li>
+<a href="../objectproperties/involvesAgent___59537022.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#involvesAgent">'involves agent'</a> <span class='keyword'>Domain</span> <span class='active-entity'>Event</span></li>
+<li>
+<a href="../objectproperties/isEventIncludedIn___-2049599520.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#isEventIncludedIn">'is event included in'</a> <span class='keyword'>Domain</span> <span class='active-entity'>Event</span></li>
+<li>
+<a href="../objectproperties/includesEvent___42519998.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#includesEvent">'includes event'</a> <span class='keyword'>Range</span> <span class='active-entity'>Event</span></li>
+<li>
+<a href="../objectproperties/isAgentInvolvedIn___678702678.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#isAgentInvolvedIn">'is agent involved in'</a> <span class='keyword'>Range</span> <span class='active-entity'>Event</span></li>
+<li>
+<a href="../objectproperties/isParticipantIn___1978995677.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#isParticipantIn">'is participant in'</a> <span class='keyword'>Range</span> <span class='active-entity'>Event</span></li>
+<li>
+<a href="../dataproperties/hasEventDate___-3040995.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#hasEventDate">'has event date'</a> <span class='keyword'>Domain</span> <span class='active-entity'>Event</span></li>
+</ul>
+</div><!-- usage (13) -->
+<p class='footer'>
+</body></html>

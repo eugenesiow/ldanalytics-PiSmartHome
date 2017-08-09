@@ -1,0 +1,55 @@
+<html><head>
+<title>Data Property: 'has data value'</title>
+<meta http-equiv='content-type' content='text/html;charset=utf8'>
+<link rel='stylesheet' href='../default.css' type='text/css' />
+</head>
+<body>
+<h1>Data Property: 'has data value'</h1>
+<h2 class='summaryURI'>http://www.loa-cnr.it/ontologies/DUL.owl#hasDataValue</h2>
+<h2>Annotations (3)</h2>
+<div class='codebox' id='annotations_(3)'>
+<ul>
+<li>
+<a href="../annotationproperties/comment___1501100887.html" title="http://www.w3.org/2000/01/rdf-schema#comment">comment</a> <span class='literal'>"A datatype property that encodes values from a datatype for an Entity. 
+There are several ways to encode values in DOLCE (Ultralite):
+
+1) Directly assert an xsd:_ value to an Entity by using hasDataValue
+2) Assert a Region for an Entity by using hasRegion, and then assert an xsd:_ value to that Region, by using hasRegionDataValue
+3) Assert a Quality for an Entity by using hasQuality, then assert a Region for that Quality, and assert an xsd:_ value to that Region, by using hasRegionDataValue
+4) When the value is required, but not directly observed, assert a Parameter for an xsd:_ value by using hasParameterDataValue, and then associate the Parameter to an Entity by using isConstraintFor
+5) When the value is required, but not directly observed, you can also assert a Parameter for a Region by using parametrizes, and then assert an xsd:_ value to that Region, by using hasRegionDataValue
+
+The five approaches obey different requirements. 
+For example, a simple value can be easily asserted by using pattern (1), but if one needs to assert an interval between two values, a Region should be introduced to materialize that interval, as pattern (2) suggests. 
+Furthermore, if one needs to distinguish the individual Quality of a value, e.g. the particular nature of the density of a substance, pattern (3) can be used. 
+Patterns (4) and (5) should be used instead when a constraint or a selection is modeled, independently from the actual observation of values in the real world." <span style='color: black;'>()</span></span></li>
+<li>
+<a href="../annotationproperties/label___653429740.html" title="http://www.w3.org/2000/01/rdf-schema#label">label</a> <span class='literal'>"ha valore" <span style='color: black;'>(it)</span></span></li>
+<li>
+<a href="../annotationproperties/label___653429740.html" title="http://www.w3.org/2000/01/rdf-schema#label">label</a> <span class='literal'>"has data value" <span style='color: black;'>(en)</span></span></li>
+</ul>
+</div><!-- annotations (3) -->
+<h2>Domains (1)</h2>
+<div class='codebox' id='domains_(1)'>
+<ul>
+<li>
+<a href="../classes/Entity___-1162242766.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#Entity">Entity</a></li>
+</ul>
+</div><!-- domains (1) -->
+<h2>Usage (5)</h2>
+<div class='codebox' id='usage_(5)'>
+<ul>
+<li>
+<span class='keyword'>DataProperty</span>: <span class='active-entity'>'has data value'</span></li>
+<li>
+<a href="hasQuantityValue___1787907908.html" title="http://purl.oclc.org/NET/iot#hasQuantityValue">hasQuantityValue</a> <span class='keyword'>⊆</span> <span class='active-entity'>'has data value'</span></li>
+<li>
+<a href="hasEventDate___-3040995.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#hasEventDate">'has event date'</a> <span class='keyword'>⊆</span> <span class='active-entity'>'has data value'</span></li>
+<li>
+<a href="hasParameterDataValue___-1416443993.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#hasParameterDataValue">'has parameter data value'</a> <span class='keyword'>⊆</span> <span class='active-entity'>'has data value'</span></li>
+<li>
+<a href="hasRegionDataValue___-365585784.html" title="http://www.loa-cnr.it/ontologies/DUL.owl#hasRegionDataValue">'has region data value'</a> <span class='keyword'>⊆</span> <span class='active-entity'>'has data value'</span></li>
+</ul>
+</div><!-- usage (5) -->
+<p class='footer'>
+</body></html>
