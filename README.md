@@ -5,6 +5,8 @@ Queries Wiki: https://github.com/eugenesiow/ldanalytics-PiSmartHome/wiki/
 
 Data ETL: https://github.com/eugenesiow/ldanalytics-data-replay
 
+Ontology: http://purl.org/NET/iot
+
 ### A LinkedData Store and Analytics Engine on a RaspberryPi for Smart Homes.
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/g8FLr974v9o/0.jpg)](https://www.youtube.com/watch?v=g8FLr974v9o)
 
